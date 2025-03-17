@@ -329,6 +329,10 @@ add element inet drop_unused_ip_packets allowed_ipv4_addresses { #{ip_net} }
 
     r "ip addr replace #{vetho}/32 dev vetho#{q_vm}"
     r "ip route replace #{vm} dev vetho#{q_vm}" if ip4
+    # BEGIN IPv4 NAT
+    local_ip4 = NetAddr::IPv4Net.parse(nics.first.net4).network.to_s
+    r "ip route replace #{local_ip4} dev vetho#{q_vm}"
+    # END IPv4 NAT
     r "echo 1 > /proc/sys/net/ipv4/conf/vetho#{q_vm}/proxy_arp"
 
     r "ip -n #{q_vm} addr replace #{vethi}/32 dev vethi#{q_vm}"
