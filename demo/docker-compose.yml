@@ -1,6 +1,7 @@
 services:
   postgres:
     image: postgres:15.4
+    restart: unless-stopped
     container_name: ubicloud-postgres
     env_file: .env
     ports:
@@ -25,6 +26,7 @@ services:
 
   app:
     image: ubicloud/ubicloud:latest
+    restart: unless-stopped
     container_name: ubicloud-app
     depends_on:
       db-migrator:
