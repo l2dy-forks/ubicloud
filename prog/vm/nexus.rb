@@ -33,7 +33,7 @@ class Prog::Vm::Nexus < Prog::Base
 
     storage_volumes ||= [{
       size_gib: vm_size.storage_size_options.first,
-      encrypted: true
+      encrypted: false
     }]
 
     # allow missing fields to make testing during development more convenient.
@@ -43,7 +43,7 @@ class Prog::Vm::Nexus < Prog::Base
       volume[:max_ios_per_sec] ||= vm_size.io_limits.max_ios_per_sec
       volume[:max_read_mbytes_per_sec] ||= vm_size.io_limits.max_read_mbytes_per_sec
       volume[:max_write_mbytes_per_sec] ||= vm_size.io_limits.max_write_mbytes_per_sec
-      volume[:encrypted] = true if !volume.has_key? :encrypted
+      volume[:encrypted] = false if !volume.has_key? :encrypted
       volume[:boot] = disk_index == boot_disk_index
 
       if volume[:read_only]
