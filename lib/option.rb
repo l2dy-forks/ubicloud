@@ -54,7 +54,7 @@ module Option
   end
   VmSizes = [2, 4, 8, 16, 30, 60].map {
     storage_size_options = [_1 * 20, _1 * 40]
-    VmSize.new("standard-#{_1}", "standard", _1, _1 * 100, 0, _1 * 4, storage_size_options, NO_IO_LIMITS, true, false, "x64")
+    VmSize.new("standard-#{_1}", "standard", _1, _1 * 100, 0, _1 * 2, storage_size_options, NO_IO_LIMITS, true, false, "x64")
   }.concat([2, 4, 8, 16, 30, 60].map {
     storage_size_options = [_1 * 20, _1 * 40]
     VmSize.new("standard-#{_1}", "standard", _1, _1 * 100, 0, (_1 * 3.2).to_i, storage_size_options, NO_IO_LIMITS, false, false, "arm64")
