@@ -13,7 +13,8 @@ class SpdkInstallation < Sequel::Model
   def supports_bdev_ubi?
     # We version stock SPDK releases similar to v23.09, and add a ubi version
     # suffix if we package bdev_ubi along with it, similar to v23.09-ubi-0.1.
-    version.match?(/^v[0-9]+\.[0-9]+-ubi-.*/)
+    #version.match?(/^v[0-9]+\.[0-9]+-ubi-.*/)
+    false
   end
 end
 
